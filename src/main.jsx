@@ -9,6 +9,8 @@ import 'bootstrap/dist/css/bootstrap.min.css';
 import { BrowserRouter, Routes, Route } from "react-router";
 import Category from './pages/Category/Category.jsx';
 import GenreList from './pages/Category/GenreList.jsx';
+import CountryList from './pages/Category/CountryList.jsx';
+import Search from './pages/search/Search.jsx';
 
 
 createRoot(document.getElementById('root')).render(
@@ -24,10 +26,11 @@ createRoot(document.getElementById('root')).render(
             <Route path=":id" element={<GenreList />} />
           </Route>
           <Route path="quoc-gia" element={<Category />}>
-            <Route path=":id" element={<GenreList />} />
+            <Route path=":id" element={<CountryList />} />
           </Route>
+          <Route path="search" element={<Search />} />
         </Route>
       </Routes>
     </BrowserRouter>
-  </StrictMode>,
+  </StrictMode>
 )

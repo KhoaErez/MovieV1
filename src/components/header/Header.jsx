@@ -1,12 +1,22 @@
+import { useState } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
 import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
-import { NavLink, Link } from 'react-router-dom';
+import { NavLink, Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
+    const [keyword, setKeyword] = useState('')
+    const navigate = useNavigate()
+
+    const hanndleSearch = (event) => {
+        event.preventDefault();
+        if (keyword.trim())
+            navigate(`/search?keyword=${encodeURIComponent(keyword.trim())}`)
+    }
+
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container fluid>
@@ -71,14 +81,16 @@ const Header = () => {
                             <NavDropdown.Item as={Link} to="quoc-gia/japan">Nhật Bản</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
-                    <Form className="d-flex">
+                    <Form className="d-flex" onSubmit={hanndleSearch}>
                         <Form.Control
                             type="search"
                             placeholder="Search"
                             className="me-2"
                             aria-label="Search"
+                            value={keyword}
+                            onChange={(event) => setKeyword(event.target.value)}
                         />
-                        <Button variant="outline-success">Search</Button>
+                        <Button type="submit" variant="outline-success">Search</Button>
                     </Form>
                 </Navbar.Collapse>
             </Container>

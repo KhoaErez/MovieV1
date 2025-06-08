@@ -2,6 +2,7 @@ import './App.scss'
 import React from 'react'
 import Header from './components/header/Header.jsx'
 import { Outlet } from 'react-router-dom'
+import Footer from './components/footer/Footer.jsx'
 
 function App() {
   return (
@@ -11,9 +12,10 @@ function App() {
           <Header />
         </div>
         <div className='main-container'>
-          <div className='main-container'>
-            <Outlet />
-          </div>
+          <Outlet />
+        </div>
+        <div className='footer-container'>
+          <Footer />
         </div>
       </div>
     </>

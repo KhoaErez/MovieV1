@@ -8,6 +8,10 @@ body {
 }
 
 .app-container {
+  min-height: 100vh;
+  display: flex;
+  flex-direction: column;
+
   .header-container {
     .navbar {
       // position: fixed;
@@ -26,31 +30,58 @@ body {
     }
   }
 
-  .homepage-container {
+  .main-container {
 
-    .homepage-content {
-      width: 40%;
-      padding: 20px;
-      bottom: 0;
-      position: relative;
-      top: 150px;
-      display: flex;
-      flex-direction: column;
-      gap: 30px;
+    .homepage-container {
+      .homepage-title {
+        justify-content: space-around;
+        padding-bottom: 10px 0;
+        margin: 6px 0;
 
-      .titlle-1 {
-        font-size: 45px;
-        font-weight: 600;
+        .homepage-title-content {
+          width: 50%;
+          margin-top: 30px;
+          padding: 20px;
+          display: flex;
+          flex-direction: column;
+          gap: 20px;
+
+          .titlle-1 {
+            font-size: 45px;
+            font-weight: 600;
+          }
+
+          .titlle-2 {
+            font-size: 24px;
+            opacity: 0.5;
+            font-style: italic;
+          }
+
+          .titlle-3 {
+            button {
+              border-radius: 5px;
+              padding: 0 15px;
+              background: #535353;
+              color: white;
+              border: none;
+              height: 40px;
+
+              &:hover {
+                background: black;
+              }
+            }
+          }
+
+        }
       }
 
-      .titlle-2 {
-        font-size: 24px;
-        opacity: 0.5;
-        font-style: italic;
+      .homepage-content {
+        .dtImg {}
       }
-
     }
   }
+
+
 }
 
 @media (min-width: 1350px) {
@@ -65,9 +96,24 @@ body {
 }
 
 video {
-  position: fixed;
-  bottom: 50px;
-  right: 60px;
+  // position: fixed;
+  // bottom: 90px;
+  // right: 60px;
+  width: 100%;
+  height: 100%;
   border-radius: 4px;
   box-shadow: 0 0 10px rgba(0, 0, 0, 0.9);
+  background: linear-gradient(90deg, rgba(223, 210, 210, 0.8) 0%, rgba(92, 173, 25, 0.8) 100%);
+}
+
+.footer-container {
+  width: 100%;
+  color: white;
+  background: black;
+
+  .footer-content {
+    // display: flex;
+    // justify-self: center;
+    // align-items: center;
+  }
 }
