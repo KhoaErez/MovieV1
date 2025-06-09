@@ -71,14 +71,19 @@ const Header = () => {
                         <Nav.Link href="#action3">Phim bộ</Nav.Link>
                         <Nav.Link href="#action4">Phim hoạt hình</Nav.Link> */}
                         <NavDropdown title="Thể loại" id="navbarScrollingDropdown">
-                            <NavDropdown.Item as={Link} to="the-loai/hai-kich">Hài kịch</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="the-loai/khoa-hoc-vien-tuong">Hoa học viễn tưởng</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="the-loai/tai-lieu">Tài liệu</NavDropdown.Item>
                             <NavDropdown.Item as={Link} to="the-loai/tinh-cam">Tình cảm</NavDropdown.Item>
                             <NavDropdown.Item as={Link} to="the-loai/hanh-dong">Hành động</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="the-loai/kinh-di">Kinh dị</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="the-loai/tam-ly">Tâm lý</NavDropdown.Item>
                         </NavDropdown>
                         <NavDropdown title="Quốc gia" id="navbarScrollingDropdown">
-                            <NavDropdown.Item as={Link} to="quoc-gia/vietnam">Việt Nam</NavDropdown.Item>
-                            <NavDropdown.Item as={Link} to="quoc-gia/korea">Hàn Quốc</NavDropdown.Item>
-                            <NavDropdown.Item as={Link} to="quoc-gia/japan">Nhật Bản</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="quoc-gia/viet-nam">Việt Nam</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="quoc-gia/han-quoc">Hàn Quốc</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="quoc-gia/nhat-ban">Nhật Bản</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="quoc-gia/trung-quoc">Trung quốc</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="quoc-gia/thai-lan">Thái Lan</NavDropdown.Item>
                         </NavDropdown>
                     </Nav>
                     <Form className="d-flex" onSubmit={hanndleSearch}>

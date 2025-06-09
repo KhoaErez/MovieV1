@@ -11,6 +11,9 @@ import Category from './pages/Category/Category.jsx';
 import GenreList from './pages/Category/GenreList.jsx';
 import CountryList from './pages/Category/CountryList.jsx';
 import Search from './pages/search/Search.jsx';
+import PhimLe from './pages/movieDM/PhimLe.jsx';
+import PhimBo from './pages/movieDM/PhimBo.jsx';
+import PhimHoatHinh from './pages/movieDM/PhimHoatHinh.jsx';
 
 
 createRoot(document.getElementById('root')).render(
@@ -19,9 +22,9 @@ createRoot(document.getElementById('root')).render(
       <Routes>
         <Route path="/" element={<App />} >
           <Route index element={<Home />} />
-          <Route path="phim-le" element={<MovieList />} />
-          <Route path="phim-bo" element={<MovieList />} />
-          <Route path="phim-hoat-hinh" element={<MovieList />} />
+          <Route path="phim-le" element={<PhimLe />} />
+          <Route path="phim-bo" element={<PhimBo />} />
+          <Route path="phim-hoat-hinh" element={<PhimHoatHinh />} />
           <Route path="the-loai" element={<Category />}>
             <Route path=":id" element={<GenreList />} />
           </Route>

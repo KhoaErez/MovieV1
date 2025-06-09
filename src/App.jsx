@@ -7,7 +7,7 @@ import Footer from './components/footer/Footer.jsx'
 function App() {
   return (
     <>
-      <div className='app-container'>
+      <div className='app-container' >
         <div className='header-container'>
           <Header />
         </div>
