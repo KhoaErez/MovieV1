@@ -1,11 +1,14 @@
-import { useLocation } from 'react-router-dom';
+import { useLocation, useSearchParams } from 'react-router-dom';
 // import image from '../../assets/Screenshot 2025-05-16 214547.png';
-import Paginations from '../pagination/Pagination';
+import Paginations from '../pagination/Paginations.jsx';
 import { useEffect, useState } from 'react';
 import { ApiPhimBo, ApiPhimLe, ApiPhimHoatHinh, ApiTheLoai, ApiQuocGia } from '../../api/Axios.jsx'
+import Pagination from '../pagination/Paginations.jsx';
 
 const MovieList = (props) => {
     let location = useLocation()
+    let [searchParams] = useSearchParams('')
+    const keyword = searchParams.get('keyword')
     const key = location.pathname;
     const [data, setData] = useState({})
     const [allData, setAllData] = useState({})
@@ -45,7 +48,7 @@ const MovieList = (props) => {
         }
         fetchData()
     }, [key, props]);
-    // console.log(location)
+    console.log(location)
     // console.log(key)
     console.log(data)
     return (
@@ -59,7 +62,12 @@ const MovieList = (props) => {
 
                                 allData && allData.phimLe && allData.phimLe.items.slice(0, 8).map((item, index) => {
                                     return (
-                                        <div className="divImg col-6 col-sm-6 col-md-3 col-xl-3" key={index}><img src={item.thumb_url} className="img-rounded" /> </div>
+                                        <div className="divImg col-6 col-sm-6 col-md-3 col-xl-3" key={index}>
+                                            <img src={item.thumb_url} className="img-rounded" />
+                                            <div className="currentMV btn btn-primary">{item.current_episode}</div>
+                                            <div className="hd btn btn-warning">{item.quality}</div>
+                                            <div className="nameMV text-white">{item.name}</div>
+                                        </div>
                                     )
                                 })
                             }
@@ -69,7 +77,12 @@ const MovieList = (props) => {
                             {
                                 allData && allData.phimBo && allData.phimLe.items.slice(0, 8).map((item, index) => {
                                     return (
-                                        <div className="divImg col-6 col-sm-6 col-md-3 col-xl-3" key={index}><img src={item.thumb_url} className="img-rounded" /> </div>
+                                        <div className="divImg col-6 col-sm-6 col-md-3 col-xl-3" key={index}>
+                                            <img src={item.thumb_url} className="img-rounded" />
+                                            <div className="currentMV btn btn-primary">{item.current_episode}</div>
+                                            <div className="hd btn btn-warning">{item.quality}</div>
+                                            <div className="nameMV text-white">{item.name}</div>
+                                        </div>
                                     )
                                 })
                             }
@@ -79,7 +92,12 @@ const MovieList = (props) => {
                             {
                                 allData && allData.phimHoatHinh && allData.phimHoatHinh.items.slice(0, 8).map((item, index) => {
                                     return (
-                                        <div className="divImg col-6 col-sm-6 col-md-3 col-xl-3" key={index}><img src={item.thumb_url} className="img-rounded" /> </div>
+                                        <div className="divImg col-6 col-sm-6 col-md-3 col-xl-3" key={index}>
+                                            <img src={item.thumb_url} className="img-rounded" />
+                                            <div className="currentMV btn btn-primary">{item.current_episode}</div>
+                                            <div className="hd btn btn-warning">{item.quality}</div>
+                                            <div className="nameMV text-white">{item.name}</div>
+                                        </div>
                                     )
                                 })
                             }
@@ -89,10 +107,17 @@ const MovieList = (props) => {
                     key === '/search' ?
                         <div>
                             <div className="row">
+                                <h4 className="mt-5">Kết quả tìm kiếm cho: <span style={{ color: 'red' }}>{keyword}</span></h4>
                                 {
                                     data && data.items && data.items.slice(0, 8).map((item, index) => {
                                         return (
-                                            <div className="divImg col-6 col-sm-6 col-md-3 col-xl-3" key={index}><img src={item.thumb_url} className="img-rounded" /> </div>
+                                            <div className="divImg col-6 col-sm-6 col-md-3 col-xl-3" key={index}>
+                                                <img src={item.thumb_url} className="img-rounded" />
+                                                <div className="currentMV btn btn-primary">{item.current_episode}</div>
+                                                <div className="hd btn btn-warning">{item.quality}</div>
+                                                <div className="nameMV text-white">{item.name}</div>
+                                            </div>
+
                                         )
                                     })
                                 }
@@ -107,9 +132,9 @@ const MovieList = (props) => {
                                         return (
                                             <div className="divImg col-6 col-sm-6 col-md-3 col-xl-3" key={index}>
                                                 <img src={item.thumb_url} className="img-rounded" />
-                                                {/* <div class="currentMV btn btn-primary">{item.current_episode}</div>
-                                                <div class="hd btn btn-warning">{item.quality}</div>
-                                                <div class="nameMV text-white">{item.name}</div> */}
+                                                <div className="currentMV btn btn-primary">{item.current_episode}</div>
+                                                <div className="hd btn btn-warning">{item.quality}</div>
+                                                <div className="nameMV text-white">{item.name}</div>
                                             </div>
                                         )
                                     })
@@ -118,7 +143,7 @@ const MovieList = (props) => {
                         </div>
             }
 
-
+            <Pagination />
 
         </div>
     )

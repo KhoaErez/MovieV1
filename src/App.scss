@@ -20,6 +20,9 @@ body {
       // z-index: 1000;
       padding-top: 20px;
       background-color: rgba(0, 0, 0, 0) !important;
+      transition: background-color 0.3s ease, box-shadow 0.3s ease;
+
+
 
       .nav-link {
         &.active {
@@ -28,12 +31,24 @@ body {
         }
       }
     }
+
+    .scrolled {
+      background-color: black !important;
+      box-shadow: 0 2px 4px rgba(0, 0, 0, 0.8);
+      transition: background-color 0.3s, box-shadow 0.3s;
+
+      a {
+        color: #fff !important;
+      }
+    }
   }
 
   .main-container {
     flex: 1;
 
     .homepage-title {
+      position: relative;
+      top: 80px;
       justify-content: space-around;
       padding-bottom: 10px 0;
       margin: 6px 0;
@@ -44,7 +59,7 @@ body {
         padding: 20px;
         display: flex;
         flex-direction: column;
-        gap: 20px;
+        gap: 10px;
 
         .titlle-1 {
           font-size: 45px;
@@ -52,7 +67,7 @@ body {
         }
 
         .titlle-2 {
-          font-size: 24px;
+          font-size: 22px;
           opacity: 0.5;
           font-style: italic;
         }
@@ -77,10 +92,49 @@ body {
     }
 
     .movie-list {
+      margin-top: 70px;
       padding: 20px 0;
 
       .divImg {
         margin-bottom: 10px;
+        position: relative;
+
+        .currentMV {
+          position: absolute;
+          top: 8px;
+          left: 16px;
+          padding: 6px 12px;
+          font-size: 0.75rem;
+          border-radius: 4px;
+          z-index: 2;
+        }
+
+        .nameMV {
+          position: absolute;
+          bottom: 10px;
+          left: 50%;
+          transform: translateX(-50%);
+          background-color: rgba(0, 0, 0, 0.6);
+          padding: 4px 10px;
+          border-radius: 6px;
+          font-weight: bold;
+          font-size: 0.9rem;
+          color: white;
+          text-align: center;
+          text-shadow: 1px 1px 4px rgba(161, 133, 133, 0.1);
+          max-width: 90%;
+          z-index: 2;
+        }
+
+        .hd {
+          position: absolute;
+          top: 8px;
+          right: 16px;
+          padding: 6px 12px;
+          font-size: 0.75rem;
+          border-radius: 4px;
+          z-index: 2;
+        }
 
         img {
           width: 100%;
@@ -120,14 +174,24 @@ video {
   background: linear-gradient(90deg, rgba(223, 210, 210, 0.8) 0%, rgba(92, 173, 25, 0.8) 100%);
 }
 
-.footer-container {
-  width: 100%;
-  color: white;
-  background: black;
 
-  .footer-content {
-    // display: flex;
-    // justify-self: center;
-    // align-items: center;
+
+.footer-content {
+  background-color: #2d3237;
+  color: #ffffff;
+  padding: 20px 10px;
+  text-align: left;
+  font-size: 15px;
+  line-height: 1.6;
+  border-top: 1px solid #444;
+  text-align: center;
+
+  p {
+    margin-bottom: 8px;
+  }
+
+  ul li {
+    font-size: 15px;
+
   }
 }

@@ -11,6 +11,8 @@ const PhimLe = () => {
             const api = await ApiPhimHoatHinh()
             setMovies(api)
         }
+        document.title = "Phim Hoạt Hình";
+
         fetchData()
     }, [])
     return (

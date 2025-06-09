@@ -12,6 +12,8 @@ const GenreList = () => {
             const apiTheLoai = await ApiTheLoai({ theloai: param.id })
             setCountryMovies(apiTheLoai)
         }
+        document.title = "Thể loại";
+
         fetchData()
     }, [param])
 

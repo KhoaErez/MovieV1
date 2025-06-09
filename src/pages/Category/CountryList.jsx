@@ -1,6 +1,6 @@
 import { Pagination } from 'react-bootstrap';
 import MovieList from '../../components/movie-list/MovieList';
-import Paginations from '../../components/pagination/Pagination.jsx'
+import Paginations from '../../components/pagination/Paginations.jsx'
 import { ApiQuocGia } from '../../api/Axios.jsx';
 import { useEffect, useState } from 'react';
 import { useParams } from 'react-router-dom';
@@ -14,6 +14,7 @@ const CountryList = () => {
             const apiCountry = await ApiQuocGia({ quocgia: param.id })
             setCountryMovies(apiCountry)
         }
+        document.title = "Quốc gia";
 
         fetchData()
     }, [param])
@@ -21,7 +22,7 @@ const CountryList = () => {
     return (
         <div>
             <MovieList countryMovies={countryMovies} />
-            <Paginations />
+            {/* <Paginations /> */}
         </div>
     )
 }

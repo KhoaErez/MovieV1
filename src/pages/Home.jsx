@@ -19,6 +19,7 @@ const Home = () => {
             }
             setAllMovie(apiAll)
         }
+        document.title = "Trang chủ";
         fetchData()
     }, [])
 
@@ -29,6 +30,7 @@ const Home = () => {
                     <div className='titlle-1'>Trần Doãn Khoa</div>
                     <div className='titlle-2'>
                         Hi mọi người! Đây là trang web được mình xây dựng với mục đích mang đến trải nghiệm xem phim thoải mái, không quảng cáo và không bị làm phiền. Đồng thời, đây cũng là nơi mình thực hành lập trình và chia sẻ những kiến thức công nghệ mình học được. Tất cả nội dung đều phục vụ cho mục tiêu cá nhân, phi thương mại. Nếu có bất kỳ vấn đề nào liên quan đến bản quyền, xin vui lòng liên hệ để mình xử lý kịp thời. Chân thành cảm ơn!</div>
+                    <p></p>
                     <div className='titlle-3'>
                         <button>Xem thêm</button>
                     </div>

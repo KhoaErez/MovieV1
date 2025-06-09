@@ -1,4 +1,4 @@
-import { useState } from 'react';
+import { useState, useEffect } from 'react';
 import Button from 'react-bootstrap/Button';
 import Container from 'react-bootstrap/Container';
 import Form from 'react-bootstrap/Form';
@@ -9,7 +9,22 @@ import { NavLink, Link, useNavigate } from 'react-router-dom';
 
 const Header = () => {
     const [keyword, setKeyword] = useState('')
+    const [bg, setBg] = useState()
     const navigate = useNavigate()
+
+    const [scrolled, setScrolled] = useState(false);
+
+    useEffect(() => {
+        const handleScroll = () => {
+            setScrolled(window.scrollY > 50);
+        };
+
+        window.addEventListener('scroll', handleScroll);
+
+        return () => {
+            window.removeEventListener('scroll', handleScroll);
+        };
+    }, []);
 
     const hanndleSearch = (event) => {
         event.preventDefault();
@@ -17,8 +32,16 @@ const Header = () => {
             navigate(`/search?keyword=${encodeURIComponent(keyword.trim())}`)
     }
 
+    const handleChangeBg = (bg) => {
+        if (bg)
+            document.documentElement.setAttribute('data-bs-theme', 'dark');
+        else
+            document.documentElement.setAttribute('data-bs-theme', 'white');
+        setBg(!bg)
+    }
+
     return (
-        <Navbar expand="lg" className="bg-body-tertiary">
+        <Navbar expand="lg" className={`navbar navbar-expand-lg fixed-top ${scrolled ? 'scrolled' : 'navbar'}`}>
             <Container fluid>
                 <Link to="/" className='navbar-brand'>KhoaTran</Link>
                 <NavLink
@@ -85,7 +108,9 @@ const Header = () => {
                             <NavDropdown.Item as={Link} to="quoc-gia/trung-quoc">Trung quốc</NavDropdown.Item>
                             <NavDropdown.Item as={Link} to="quoc-gia/thai-lan">Thái Lan</NavDropdown.Item>
                         </NavDropdown>
+
                     </Nav>
+                    <Button type="submit" variant="outline-success" className='mx-2 btn' onClick={() => handleChangeBg(bg)}>{bg === true ? 'Tối' : 'Sáng'}</Button>
                     <Form className="d-flex" onSubmit={hanndleSearch}>
                         <Form.Control
                             type="search"
