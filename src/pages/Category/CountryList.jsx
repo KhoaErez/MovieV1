@@ -1,29 +1,14 @@
-// import image from '../../assets/Screenshot 2025-05-16 214547.png';
+import { Pagination } from 'react-bootstrap';
 import MovieList from '../../components/movie-list/MovieList';
+import Paginations from '../../components/pagination/Pagination.jsx'
 
 const CountryList = () => {
     return (
-        // <div className='country-list-container'>
-        //     <div className="row">
-        //         <div className="col-sm-6 col-md-3"><img src={image} className="img-rounded" alt="Cinque Terre" width="304" height="236" /> </div>
-        //         <div className="col-sm-6 col-md-3"><img src={image} className="img-rounded" alt="Cinque Terre" width="304" height="236" /> </div>
-        //         <div className="col-sm-6 col-md-3"><img src={image} className="img-rounded" alt="Cinque Terre" width="304" height="236" /> </div>
-        //         <div className="col-sm-6 col-md-3"><img src={image} className="img-rounded" alt="Cinque Terre" width="304" height="236" /> </div>
-        //     </div>
-        //     <div className="row">
-        //         <div className="col-sm-6 col-md-3"><img src={image} className="img-rounded" alt="Cinque Terre" width="304" height="236" /> </div>
-        //         <div className="col-sm-6 col-md-3"><img src={image} className="img-rounded" alt="Cinque Terre" width="304" height="236" /> </div>
-        //         <div className="col-sm-6 col-md-3"><img src={image} className="img-rounded" alt="Cinque Terre" width="304" height="236" /> </div>
-        //         <div className="col-sm-6 col-md-3"><img src={image} className="img-rounded" alt="Cinque Terre" width="304" height="236" /> </div>
-        //     </div>
-        //     <div className="row">
-        //         <div className="col-sm-6 col-md-3"><img src={image} className="img-rounded" alt="Cinque Terre" width="304" height="236" /> </div>
-        //         <div className="col-sm-6 col-md-3"><img src={image} className="img-rounded" alt="Cinque Terre" width="304" height="236" /> </div>
-        //         <div className="col-sm-6 col-md-3"><img src={image} className="img-rounded" alt="Cinque Terre" width="304" height="236" /> </div>
-        //         <div className="col-sm-6 col-md-3"><img src={image} className="img-rounded" alt="Cinque Terre" width="304" height="236" /> </div>
-        //     </div>
-        // </div>
-        <MovieList />
+        <>
+            <MovieList />
+            <Paginations />
+        </>
+
     )
 }
 

@@ -20,7 +20,7 @@ const Header = () => {
     return (
         <Navbar expand="lg" className="bg-body-tertiary">
             <Container fluid>
-                <Navbar.Brand href="/">KhoaTran</Navbar.Brand>
+                <Link to="/" className='navbar-brand'>KhoaTran</Link>
                 <NavLink
                     to="/"
                     className={({ isActive, isPending }) =>
