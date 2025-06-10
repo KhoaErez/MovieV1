@@ -1,48 +1,43 @@
-import { useState } from 'react';
 import Pagination from 'react-bootstrap/Pagination';
 
-const Paginations = () => {
-    const [activePage, setActivePage] = useState(1);
-    const totalPages = 10;
-
+const Paginations = ({ currentPage, totalPages, onPageChange }) => {
     const handlePageClick = (pageNumber) => {
-        setActivePage(pageNumber);
-    }
-
-    let items = [];
-
-    for (let i = 1; i <= totalPages; i++) {
-        items.push(
-            <Pagination.Item
-                key={i}
-                active={i === activePage}
-                onClick={() => handlePageClick(i)}
-            >
-                {i}
-            </Pagination.Item>
-        );
-    }
+        onPageChange(pageNumber);
+    };
 
     return (
-        <div className='d-flex container justify-content-center align-items-center'>
+        <div className='d-flex container justify-content-center align-items-center mt-3'>
             <Pagination>
-                <Pagination.First onClick={() => setActivePage(1)} />
-                <Pagination.Prev onClick={() => setActivePage((prev) => Math.max(prev - 1, 1))} />
-                <Pagination.Item>{activePage}</Pagination.Item>
-                <Pagination.Ellipsis />
+                <Pagination.First onClick={() => handlePageClick(1)} disabled={currentPage === 1} />
+                <Pagination.Prev onClick={() => handlePageClick(Math.max(currentPage - 1, 1))} disabled={currentPage === 1} />
 
-                <Pagination.Item>{activePage - 1}</Pagination.Item>
-                <Pagination.Item active>{activePage}</Pagination.Item>
-                <Pagination.Item >{activePage + 1}</Pagination.Item>
+                {currentPage > 2 && <Pagination.Item onClick={() => handlePageClick(1)}>1</Pagination.Item>}
+                {currentPage > 3 && <Pagination.Ellipsis disabled />}
 
-                <Pagination.Ellipsis />
-                <Pagination.Item>{totalPages}</Pagination.Item>
-                <Pagination.Next onClick={() => setActivePage((next) => Math.min(next + 1, totalPages))} />
-                <Pagination.Last onClick={() => setActivePage(totalPages)} />
+                {currentPage > 1 && (
+                    <Pagination.Item onClick={() => handlePageClick(currentPage - 1)}>
+                        {currentPage - 1}
+                    </Pagination.Item>
+                )}
+
+                <Pagination.Item active>{currentPage}</Pagination.Item>
+
+                {currentPage < totalPages && (
+                    <Pagination.Item onClick={() => handlePageClick(currentPage + 1)}>
+                        {currentPage + 1}
+                    </Pagination.Item>
+                )}
+
+                {currentPage < totalPages - 2 && <Pagination.Ellipsis disabled />}
+                {currentPage < totalPages - 1 && (
+                    <Pagination.Item onClick={() => handlePageClick(totalPages)}>{totalPages}</Pagination.Item>
+                )}
+
+                <Pagination.Next onClick={() => handlePageClick(Math.min(currentPage + 1, totalPages))} disabled={currentPage === totalPages} />
+                <Pagination.Last onClick={() => handlePageClick(totalPages)} disabled={currentPage === totalPages} />
             </Pagination>
         </div>
-
     );
-}
+};
 
 export default Paginations;

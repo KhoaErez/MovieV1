@@ -48,7 +48,7 @@ const MovieList = (props) => {
         }
         fetchData()
     }, [key, props]);
-    console.log(location)
+    // console.log(location)
     // console.log(key)
     console.log(data)
     return (
@@ -142,8 +142,6 @@ const MovieList = (props) => {
                             </div>
                         </div>
             }
-
-            <Pagination />
 
         </div>
     )

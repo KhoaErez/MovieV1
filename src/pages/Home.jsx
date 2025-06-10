@@ -9,9 +9,9 @@ const Home = () => {
 
     useEffect(() => {
         const fetchData = async () => {
-            const phimLeData = await ApiPhimLe()
-            const phimBoData = await ApiPhimBo()
-            const phimHoatHinhData = await ApiPhimHoatHinh()
+            const phimLeData = await ApiPhimLe(1)
+            const phimBoData = await ApiPhimBo(1)
+            const phimHoatHinhData = await ApiPhimHoatHinh(1)
             const apiAll = {
                 'phimLe': phimLeData,
                 'phimBo': phimBoData,

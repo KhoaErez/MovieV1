@@ -1,26 +1,26 @@
 import axios from "./DefaultApi"
 
-const ApiPhimBo = async () => {
+const ApiPhimBo = async (props) => {
     try {
-        const res = await axios.get('/danh-sach/phim-bo?page=1')
+        const res = await axios.get(`/danh-sach/phim-bo?page=${props.page}`)
         return res.data;
     } catch (err) {
         console.log('Lỗi: ', err)
     }
 }
 
-const ApiPhimLe = async () => {
+const ApiPhimLe = async (props) => {
     try {
-        const res = await axios.get('/danh-sach/phim-le?page=1')
+        const res = await axios.get(`/danh-sach/phim-le?page=${props.page}`)
         return res.data;
     } catch (err) {
         console.log('Lỗi: ', err)
     }
 }
 
-const ApiPhimHoatHinh = async () => {
+const ApiPhimHoatHinh = async ({ page }) => {
     try {
-        const res = await axios.get('/danh-sach/hoat-hinh?page=1')
+        const res = await axios.get(`/danh-sach/hoat-hinh?page=${page}`)
         return res.data;
     } catch (err) {
         console.log('Lỗi: ', err)
@@ -29,16 +29,16 @@ const ApiPhimHoatHinh = async () => {
 
 const ApiTheLoai = async (props) => {
     try {
-        const res = await axios.get(`/the-loai/${props.theloai}?page=1`)
+        const res = await axios.get(`/the-loai/${props.theloai}?page=${props.page}`)
         return res.data;
     } catch (err) {
         console.log('Lỗi: ', err)
     }
 }
 
-const ApiQuocGia = async (props) => {
+const ApiQuocGia = async ({ quocgia, page }) => {
     try {
-        const res = await axios.get(`/quoc-gia/${props.quocgia}?page=1`)
+        const res = await axios.get(`/quoc-gia/${quocgia}?page=${page}`)
         return res.data;
     } catch (err) {
         console.log('Lỗi: ', err)

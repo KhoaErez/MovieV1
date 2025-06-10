@@ -89,10 +89,6 @@ const Header = () => {
                         >
                             Phim hoạt hình
                         </NavLink>
-                        {/* <Nav.Link href="#action1">Trang chủ</Nav.Link>
-                        <Nav.Link href="#action2">Phim lẻ</Nav.Link>
-                        <Nav.Link href="#action3">Phim bộ</Nav.Link>
-                        <Nav.Link href="#action4">Phim hoạt hình</Nav.Link> */}
                         <NavDropdown title="Thể loại" id="navbarScrollingDropdown">
                             <NavDropdown.Item as={Link} to="the-loai/khoa-hoc-vien-tuong">Hoa học viễn tưởng</NavDropdown.Item>
                             <NavDropdown.Item as={Link} to="the-loai/tai-lieu">Tài liệu</NavDropdown.Item>
