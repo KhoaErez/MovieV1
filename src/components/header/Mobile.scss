@@ -1,0 +1,26 @@
+.navbar-collapse.show {
+    background-color: rgba(0, 0, 0, 0.9);
+    /* hoặc white nếu bạn dùng nền sáng */
+    backdrop-filter: blur(4px);
+    /* tạo hiệu ứng làm mờ nền */
+    padding: 1rem;
+    border-radius: 10px;
+}
+
+@media (max-width: 991px) {
+
+    /* Tương đương với Bootstrap 'lg' breakpoint */
+    .navbar-collapse.show {
+        background-color: rgba(0, 0, 0, 0.9);
+        /* dark nền */
+        backdrop-filter: blur(4px);
+    }
+
+    .navbar-nav .nav-link {
+        color: white;
+    }
+
+    .navbar-collapse {
+        border-radius: 10px;
+    }
+}

@@ -6,6 +6,7 @@ import Nav from 'react-bootstrap/Nav';
 import Navbar from 'react-bootstrap/Navbar';
 import NavDropdown from 'react-bootstrap/NavDropdown';
 import { NavLink, Link, useNavigate } from 'react-router-dom';
+import './Mobile.scss'
 
 const Header = () => {
     const [keyword, setKeyword] = useState('')
@@ -13,6 +14,7 @@ const Header = () => {
     const navigate = useNavigate()
 
     const [scrolled, setScrolled] = useState(false);
+
 
     useEffect(() => {
         const handleScroll = () => {
@@ -91,7 +93,6 @@ const Header = () => {
                             Phim hoạt hình
                         </NavLink>
                         <NavDropdown title="Thể loại" id="navbarScrollingDropdown">
-                            <NavDropdown.Item as={Link} to="the-loai/khoa-hoc-vien-tuong">Khoa học viễn tưởng</NavDropdown.Item>
                             <NavDropdown.Item as={Link} to="the-loai/tai-lieu">Tài liệu</NavDropdown.Item>
                             <NavDropdown.Item as={Link} to="the-loai/tinh-cam">Tình cảm</NavDropdown.Item>
                             <NavDropdown.Item as={Link} to="the-loai/hanh-dong">Hành động</NavDropdown.Item>

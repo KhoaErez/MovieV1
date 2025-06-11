@@ -57,7 +57,7 @@ const MovieList = (props) => {
     }, [key, props]);
     // console.log(location)
     // console.log(key)
-    // console.log('data: ', data)
+    console.log('data: ', data)
     // console.log('allData: ', allData)
     return (
         <div className="movie-list container">
