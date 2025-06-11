@@ -96,6 +96,8 @@ const Detail = () => {
                                 className="iframe-video"
                                 display="block"
                                 position="relative"
+                                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture"
+                                allowfullscreen
                             />
                         </div>
                     ) : (
