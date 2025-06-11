@@ -1,4 +1,4 @@
-import { useLocation, useSearchParams } from 'react-router-dom';
+import { useLocation, useNavigate, useSearchParams } from 'react-router-dom';
 // import image from '../../assets/Screenshot 2025-05-16 214547.png';
 import Paginations from '../pagination/Paginations.jsx';
 import { useEffect, useState } from 'react';
@@ -6,12 +6,19 @@ import { ApiPhimBo, ApiPhimLe, ApiPhimHoatHinh, ApiTheLoai, ApiQuocGia } from '.
 import Pagination from '../pagination/Paginations.jsx';
 
 const MovieList = (props) => {
-    let location = useLocation()
-    let [searchParams] = useSearchParams('')
-    const keyword = searchParams.get('keyword')
-    const key = location.pathname;
     const [data, setData] = useState({})
     const [allData, setAllData] = useState({})
+    const navigate = useNavigate()
+    let location = useLocation()
+    let [searchParams] = useSearchParams('')
+
+    const key = location.pathname;
+
+    const keyword = searchParams.get('keyword')
+
+    const handleDetail = (slug) => {
+        navigate(`/detail/${slug}`)
+    }
 
     useEffect(() => {
         const fetchData = async () => {
@@ -23,7 +30,7 @@ const MovieList = (props) => {
                 }
                 setAllData(all)
             }
-            else if (key === '/search') {
+            else if (key === '/tim-kiem') {
                 const search = await props.searchMovies
                 setData(search)
             }
@@ -50,7 +57,8 @@ const MovieList = (props) => {
     }, [key, props]);
     // console.log(location)
     // console.log(key)
-    console.log(data)
+    // console.log('data: ', data)
+    // console.log('allData: ', allData)
     return (
         <div className="movie-list container">
             {
@@ -60,13 +68,13 @@ const MovieList = (props) => {
                         <div className="row">
                             {
 
-                                allData && allData.phimLe && allData.phimLe.items.slice(0, 8).map((item, index) => {
+                                allData && allData?.phimLe?.data && allData?.phimLe?.data?.items?.slice(0, 8).map((item, index) => {
                                     return (
-                                        <div className="divImg col-6 col-sm-6 col-md-3 col-xl-3" key={index}>
-                                            <img src={item.thumb_url} className="img-rounded" />
-                                            <div className="currentMV btn btn-primary">{item.current_episode}</div>
+                                        <div className="divImg col-6 col-sm-6 col-md-3 col-xl-3" key={index} onClick={() => handleDetail(item.slug)}>
+                                            <img src={`https://phimimg.com/${item.poster_url}`} className="img-rounded" />
+                                            <div className="year-mv btn btn-primary">{item.year}</div>
                                             <div className="hd btn btn-warning">{item.quality}</div>
-                                            <div className="nameMV text-white">{item.name}</div>
+                                            <div className="name-mv text-white">{item.name}</div>
                                         </div>
                                     )
                                 })
@@ -75,13 +83,13 @@ const MovieList = (props) => {
                         <h3 className='btn btn-success mt-2'>Danh sách phim bộ &gt;&gt;&gt;</h3>
                         <div className="row">
                             {
-                                allData && allData.phimBo && allData.phimLe.items.slice(0, 8).map((item, index) => {
+                                allData && allData?.phimBo?.data && allData?.phimBo?.data?.items?.slice(0, 8).map((item, index) => {
                                     return (
-                                        <div className="divImg col-6 col-sm-6 col-md-3 col-xl-3" key={index}>
-                                            <img src={item.thumb_url} className="img-rounded" />
-                                            <div className="currentMV btn btn-primary">{item.current_episode}</div>
+                                        <div className="divImg col-6 col-sm-6 col-md-3 col-xl-3" key={index} onClick={() => handleDetail(item.slug)}>
+                                            <img src={`https://phimimg.com/${item.poster_url}`} className="img-rounded" />
+                                            <div className="year-mv btn btn-primary">{item.year}</div>
                                             <div className="hd btn btn-warning">{item.quality}</div>
-                                            <div className="nameMV text-white">{item.name}</div>
+                                            <div className="name-mv text-white">{item.name}</div>
                                         </div>
                                     )
                                 })
@@ -90,13 +98,13 @@ const MovieList = (props) => {
                         <h3 className='btn btn-success mt-2'>Danh sách phim hoạt hình &gt;&gt;&gt;</h3>
                         <div className="row">
                             {
-                                allData && allData.phimHoatHinh && allData.phimHoatHinh.items.slice(0, 8).map((item, index) => {
+                                allData && allData?.phimHoatHinh?.data && allData?.phimHoatHinh?.data?.items?.slice(0, 8).map((item, index) => {
                                     return (
-                                        <div className="divImg col-6 col-sm-6 col-md-3 col-xl-3" key={index}>
-                                            <img src={item.thumb_url} className="img-rounded" />
-                                            <div className="currentMV btn btn-primary">{item.current_episode}</div>
+                                        <div className="divImg col-6 col-sm-6 col-md-3 col-xl-3" key={index} onClick={() => handleDetail(item.slug)}>
+                                            <img src={`https://phimimg.com/${item.poster_url}`} className="img-rounded" />
+                                            <div className="year-mv btn btn-primary">{item.year}</div>
                                             <div className="hd btn btn-warning">{item.quality}</div>
-                                            <div className="nameMV text-white">{item.name}</div>
+                                            <div className="name-mv text-white">{item.name}</div>
                                         </div>
                                     )
                                 })
@@ -104,18 +112,18 @@ const MovieList = (props) => {
                         </div>
                     </div>
                     :
-                    key === '/search' ?
+                    key === '/tim-kiem' ?
                         <div>
                             <div className="row">
                                 <h4 className="mt-5">Kết quả tìm kiếm cho: <span style={{ color: 'red' }}>{keyword}</span></h4>
                                 {
-                                    data && data.items && data.items.slice(0, 8).map((item, index) => {
+                                    data?.data?.items && data?.data?.items?.slice(0, 12).map((item, index) => {
                                         return (
-                                            <div className="divImg col-6 col-sm-6 col-md-3 col-xl-3" key={index}>
-                                                <img src={item.thumb_url} className="img-rounded" />
-                                                <div className="currentMV btn btn-primary">{item.current_episode}</div>
+                                            <div className="divImg col-6 col-sm-6 col-md-3 col-xl-3" key={index} onClick={() => handleDetail(item.slug)}>
+                                                <img src={`${data.data.APP_DOMAIN_CDN_IMAGE}/${item.poster_url}`} className="img-rounded" />
+                                                <div className="year-mv btn btn-primary">{item.year}</div>
                                                 <div className="hd btn btn-warning">{item.quality}</div>
-                                                <div className="nameMV text-white">{item.name}</div>
+                                                <div className="name-mv text-white">{item.name}</div>
                                             </div>
 
                                         )
@@ -125,16 +133,16 @@ const MovieList = (props) => {
                         </div>
                         :
                         <div>
-                            <h3 className='btn btn-success mt-2'>{key === '/phim-le' ? 'Danh sách phim lẻ' : key === '/phim-bo' ? 'Danh sách phim bộ' : key === '/phim-hoat-hinh' ? 'Danh sách phim hoạt hình' : `Danh sách phim ${data?.cat?.title}`} &gt;&gt;&gt;</h3>
+                            <h3 className='btn btn-success mt-2'>{key === '/phim-le' ? 'Danh sách phim lẻ' : key === '/phim-bo' ? 'Danh sách phim bộ' : key === '/phim-hoat-hinh' ? 'Danh sách phim hoạt hình' : `Danh sách phim ${data?.data?.breadCrumb[0]?.name}`} &gt;&gt;&gt;</h3>
                             <div className="row">
                                 {
-                                    data && data.items && data.items.slice(0, 8).map((item, index) => {
+                                    data && data?.data?.items && data?.data?.items.slice(0, 8).map((item, index) => {
                                         return (
-                                            <div className="divImg col-6 col-sm-6 col-md-3 col-xl-3" key={index}>
-                                                <img src={item.thumb_url} className="img-rounded" />
-                                                <div className="currentMV btn btn-primary">{item.current_episode}</div>
+                                            <div className="divImg col-6 col-sm-6 col-md-3 col-xl-3" key={index} onClick={() => handleDetail(item.slug)}>
+                                                <img src={`${data.data.APP_DOMAIN_CDN_IMAGE}/${item.poster_url}`} className="img-rounded" />
+                                                <div className="year-mv btn btn-primary">{item.year}</div>
                                                 <div className="hd btn btn-warning">{item.quality}</div>
-                                                <div className="nameMV text-white">{item.name}</div>
+                                                <div className="name-mv text-white">{item.name}</div>
                                             </div>
                                         )
                                     })

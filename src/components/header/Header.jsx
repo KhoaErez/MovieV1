@@ -29,7 +29,8 @@ const Header = () => {
     const hanndleSearch = (event) => {
         event.preventDefault();
         if (keyword.trim())
-            navigate(`/search?keyword=${encodeURIComponent(keyword.trim())}`)
+            navigate(`/tim-kiem?keyword=${encodeURIComponent(keyword.trim())}&page=`)
+        // navigate(`/search?keyword=${encodeURIComponent(keyword.trim())}`)
     }
 
     const handleChangeBg = (bg) => {
@@ -90,7 +91,7 @@ const Header = () => {
                             Phim hoạt hình
                         </NavLink>
                         <NavDropdown title="Thể loại" id="navbarScrollingDropdown">
-                            <NavDropdown.Item as={Link} to="the-loai/khoa-hoc-vien-tuong">Hoa học viễn tưởng</NavDropdown.Item>
+                            <NavDropdown.Item as={Link} to="the-loai/khoa-hoc-vien-tuong">Khoa học viễn tưởng</NavDropdown.Item>
                             <NavDropdown.Item as={Link} to="the-loai/tai-lieu">Tài liệu</NavDropdown.Item>
                             <NavDropdown.Item as={Link} to="the-loai/tinh-cam">Tình cảm</NavDropdown.Item>
                             <NavDropdown.Item as={Link} to="the-loai/hanh-dong">Hành động</NavDropdown.Item>
@@ -107,6 +108,7 @@ const Header = () => {
 
                     </Nav>
                     <Button type="submit" variant="outline-success" className='mx-2 btn' onClick={() => handleChangeBg(bg)}>{bg === true ? 'Tối' : 'Sáng'}</Button>
+
                     <Form className="d-flex" onSubmit={hanndleSearch}>
                         <Form.Control
                             type="search"

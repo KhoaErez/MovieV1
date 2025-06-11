@@ -29,7 +29,10 @@ const PhimLe = () => {
     return (
         <>
             <MovieList phimHoatHinh={movie} />
-            <Paginations currentPage={currentPage} totalPages={movie?.paginate?.total_page} onPageChange={onPageChange} />
+            <Paginations
+                currentPage={currentPage}
+                totalPages={movie?.data?.params?.pagination?.totalPages}
+                onPageChange={onPageChange} />
         </>
     )
 }

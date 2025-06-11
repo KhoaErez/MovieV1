@@ -1,6 +1,8 @@
 import axios from "axios";
 
 export default axios.create({
-    baseURL: 'https://phim.nguonc.com/api/films'
+    baseURL: 'https://phimapi.com/v1/api'
+    // baseURL: 'https://phim.nguonc.com/api/films'
+
 })
 

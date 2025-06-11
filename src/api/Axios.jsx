@@ -1,4 +1,5 @@
 import axios from "./DefaultApi"
+import movie from './BaseApiMovie'
 
 const ApiPhimBo = async (props) => {
     try {
@@ -45,9 +46,18 @@ const ApiQuocGia = async ({ quocgia, page }) => {
     }
 }
 
-const ApiSearch = async (slug) => {
+const ApiSearch = async ({ slug, page }) => {
     try {
-        const res = await axios.get(`/search?keyword=${slug}`)
+        const res = await axios.get(`/tim-kiem?keyword=${slug}&page=${page}`)
+        return res.data;
+    } catch (err) {
+        console.log('Lỗi: ', err)
+    }
+}
+
+const ApiMovie = async ({ slug }) => {
+    try {
+        const res = await movie.get(`/${slug}`)
         return res.data;
     } catch (err) {
         console.log('Lỗi: ', err)
@@ -59,4 +69,5 @@ export { ApiPhimLe }
 export { ApiPhimHoatHinh }
 export { ApiTheLoai }
 export { ApiQuocGia }
-export { ApiSearch }    
+export { ApiSearch }
+export { ApiMovie }    

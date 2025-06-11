@@ -25,11 +25,14 @@ const PhimBo = () => {
 
         fetchData()
     }, [currentPage])
-
+    // console.log('data phim bo: ', movie)
     return (
         <>
             <MovieList phimBo={movie} />
-            <Paginations currentPage={currentPage} totalPages={movie?.paginate?.total_page} onPageChange={onPageChange} />
+            <Paginations
+                currentPage={currentPage}
+                totalPages={movie?.data?.params?.pagination?.totalPages}
+                onPageChange={onPageChange} />
         </>
     )
 }

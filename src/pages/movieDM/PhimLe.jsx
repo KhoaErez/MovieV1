@@ -25,14 +25,14 @@ const PhimLe = () => {
     const handlePageChange = (page) => {
         navigate(`/phim-le?page=${page}`)
     }
-
+    console.log('phim-le: ', movie)
     return (
         <>
             <MovieList phimLe={movie} />
 
             <Paginations
                 currentPage={currentPage}
-                totalPages={movie?.paginate?.total_page}
+                totalPages={movie?.data?.params?.pagination?.totalPages}
                 onPageChange={handlePageChange}
             />
         </>

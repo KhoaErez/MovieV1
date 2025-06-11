@@ -67,7 +67,7 @@ body {
         }
 
         .titlle-2 {
-          font-size: 22px;
+          font-size: 20px;
           opacity: 0.5;
           font-style: italic;
         }
@@ -99,7 +99,9 @@ body {
         margin-bottom: 10px;
         position: relative;
 
-        .currentMV {
+
+
+        .year-mv {
           position: absolute;
           top: 8px;
           left: 16px;
@@ -109,7 +111,7 @@ body {
           z-index: 2;
         }
 
-        .nameMV {
+        .name-mv {
           position: absolute;
           bottom: 10px;
           left: 50%;
@@ -144,9 +146,46 @@ body {
           cursor: pointer;
           font-weight: bold;
           opacity: 1;
+
+          &:hover {
+            opacity: 0.6;
+          }
         }
       }
     }
+
+    .detail-movie {
+      margin-top: 80px;
+
+      .image-movie {
+        position: relative;
+
+        img {
+          width: 100%;
+          height: auto;
+          border-radius: 10px;
+          box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+        }
+
+        .title {
+          position: absolute;
+          bottom: 40px;
+          left: 40px;
+          // background: rgba(0, 0, 0, 0.4);
+          font-size: 24px;
+          font-weight: bold;
+          // border-radius: 10px;
+          // box-shadow: 0 0 10px rgba(0, 0, 0, 0.6);
+
+          h2 {
+            text-shadow: 0 0 10px rgba(0, 0, 0, 1);
+          }
+        }
+      }
+
+
+    }
+
   }
 
 

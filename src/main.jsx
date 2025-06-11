@@ -14,6 +14,7 @@ import Search from './pages/search/Search.jsx';
 import PhimLe from './pages/movieDM/PhimLe.jsx';
 import PhimBo from './pages/movieDM/PhimBo.jsx';
 import PhimHoatHinh from './pages/movieDM/PhimHoatHinh.jsx';
+import Detail from './pages/detail/Detail.jsx';
 
 
 createRoot(document.getElementById('root')).render(
@@ -31,7 +32,8 @@ createRoot(document.getElementById('root')).render(
           <Route path="quoc-gia" element={<Category />}>
             <Route path=":id" element={<CountryList />} />
           </Route>
-          <Route path="search" element={<Search />} />
+          <Route path="tim-kiem" element={<Search />} />
+          <Route path="detail/:id" element={<Detail />} />
         </Route>
       </Routes>
     </BrowserRouter>

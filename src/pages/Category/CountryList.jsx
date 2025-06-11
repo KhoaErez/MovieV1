@@ -30,7 +30,10 @@ const CountryList = () => {
     return (
         <>
             <MovieList countryMovies={countryMovies} />
-            <Paginations currentPage={currentPage} totalPages={countryMovies?.paginate?.total_page} onPageChange={onPageChange} />
+            <Paginations
+                currentPage={currentPage}
+                totalPages={countryMovies?.data?.params?.pagination?.totalPages}
+                onPageChange={onPageChange} />
         </>
     )
 }

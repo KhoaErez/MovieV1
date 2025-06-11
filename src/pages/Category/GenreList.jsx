@@ -29,7 +29,10 @@ const GenreList = () => {
     return (
         <>
             <MovieList categoryMovies={categoryMovies} />
-            <Paginations currentPage={currentPage} totalPages={categoryMovies?.paginate?.total_page} onPageChange={onPageChange} />
+            <Paginations
+                currentPage={currentPage}
+                totalPages={categoryMovies?.data?.params?.pagination?.totalPages}
+                onPageChange={onPageChange} />
         </>
     )
 }
