@@ -60,7 +60,7 @@ const Detail = () => {
                 <div>
                     <label className="mt-3">Nội dung: </label>
                     <p>
-                        {data?.movie?.description}
+                        {data?.movie?.content}
                     </p>
 
                     <p><span>Quốc gia: </span>{data?.movie?.country[0]?.name || 'Đang cập nhật'}</p>
