@@ -112,7 +112,7 @@ const Detail = () => {
                     {urlVideo ?
                         <div className='my-2 flex-wrap container mx-2'>
                             {
-                                (data?.episodes?.flatMap((item) => item?.server_data || [])?.length || 0) >= 29 ?
+                                (data?.episodes?.flatMap((item) => item?.server_data || [])?.length || 0) > 49 ?
                                     <div>
                                         {
                                             sortedEpisodes?.filter(ep => ep.server_name === serverName).map((episode) => (
